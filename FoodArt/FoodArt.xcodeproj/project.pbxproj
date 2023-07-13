@@ -25,6 +25,8 @@
 		669409862A6015A1009D0C32 /* AppBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669409852A6015A1009D0C32 /* AppBuilder.swift */; };
 		669409892A6018C9009D0C32 /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669409882A6018C9009D0C32 /* URL.swift */; };
 		6694098E2A601BFA009D0C32 /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6694098D2A601BFA009D0C32 /* NetworkError.swift */; };
+		669409972A60224D009D0C32 /* KitchenCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669409962A60224D009D0C32 /* KitchenCategory.swift */; };
+		669409992A602359009D0C32 /* DishesCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669409982A602359009D0C32 /* DishesCategory.swift */; };
 		B14EA6378D2E9ABC92BE5BB8 /* Pods_FoodArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A7B1D61492366995F488C9 /* Pods_FoodArt.framework */; };
 /* End PBXBuildFile section */
 
@@ -49,6 +51,8 @@
 		669409852A6015A1009D0C32 /* AppBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBuilder.swift; sourceTree = "<group>"; };
 		669409882A6018C9009D0C32 /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		6694098D2A601BFA009D0C32 /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		669409962A60224D009D0C32 /* KitchenCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitchenCategory.swift; sourceTree = "<group>"; };
+		669409982A602359009D0C32 /* DishesCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesCategory.swift; sourceTree = "<group>"; };
 		80B7EFEE6FC990F6318B2FDE /* Pods-FoodArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodArt.debug.xcconfig"; path = "Target Support Files/Pods-FoodArt/Pods-FoodArt.debug.xcconfig"; sourceTree = "<group>"; };
 		BE423CFF8F80B70E699F4A14 /* Pods-FoodArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodArt.release.xcconfig"; path = "Target Support Files/Pods-FoodArt/Pods-FoodArt.release.xcconfig"; sourceTree = "<group>"; };
 		E2A7B1D61492366995F488C9 /* Pods_FoodArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,7 +108,7 @@
 		66594F362A6007AC00D2D7E8 /* FoodArt */ = {
 			isa = PBXGroup;
 			children = (
-				6694098B2A601BE3009D0C32 /* ErrorModels */,
+				6694098F2A602099009D0C32 /* Models */,
 				669409582A600AF9009D0C32 /* Utilities  */,
 				669409532A600ABC009D0C32 /* Controllers */,
 				66594F372A6007AC00D2D7E8 /* AppDelegate.swift */,
@@ -335,6 +339,48 @@
 			path = NetworkError;
 			sourceTree = "<group>";
 		};
+		6694098F2A602099009D0C32 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				669409932A60212A009D0C32 /* FetchModels */,
+				669409902A60209F009D0C32 /* DataModels */,
+				6694098B2A601BE3009D0C32 /* ErrorModels */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		669409902A60209F009D0C32 /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataModels;
+			sourceTree = "<group>";
+		};
+		669409932A60212A009D0C32 /* FetchModels */ = {
+			isa = PBXGroup;
+			children = (
+				669409952A60217B009D0C32 /* DishesCategory */,
+				669409942A602130009D0C32 /* KitchenCategory */,
+			);
+			path = FetchModels;
+			sourceTree = "<group>";
+		};
+		669409942A602130009D0C32 /* KitchenCategory */ = {
+			isa = PBXGroup;
+			children = (
+				669409962A60224D009D0C32 /* KitchenCategory.swift */,
+			);
+			path = KitchenCategory;
+			sourceTree = "<group>";
+		};
+		669409952A60217B009D0C32 /* DishesCategory */ = {
+			isa = PBXGroup;
+			children = (
+				669409982A602359009D0C32 /* DishesCategory.swift */,
+			);
+			path = DishesCategory;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -463,6 +509,8 @@
 				669409862A6015A1009D0C32 /* AppBuilder.swift in Sources */,
 				669409722A600D55009D0C32 /* Dictionary.swift in Sources */,
 				669409652A600CC7009D0C32 /* NetworkManager.swift in Sources */,
+				669409972A60224D009D0C32 /* KitchenCategory.swift in Sources */,
+				669409992A602359009D0C32 /* DishesCategory.swift in Sources */,
 				66594F382A6007AC00D2D7E8 /* AppDelegate.swift in Sources */,
 				669409602A600C57009D0C32 /* LaunchViewModel.swift in Sources */,
 			);
