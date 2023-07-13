@@ -2,9 +2,7 @@ import UIKit
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-    private var appBuilder: AppBuilder?
-    private let screen = UIScreen()
-    
+    var appBuilder: AppBuilder?
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {

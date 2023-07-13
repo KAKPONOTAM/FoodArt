@@ -1,8 +1,7 @@
 import UIKit
 
 final class MainModuleBuilder {
-    static func assemblyLaunchViewController() -> UIViewController {
-        let router = MainRouter()
+    static func assemblyLaunchViewController(router: MainRouter) -> UIViewController {
         let launchViewController = LaunchViewController()
         let networkManager = NetworkManager()
         let viewModel = LaunchViewModel(networkManager: networkManager, router: router)
@@ -10,5 +9,16 @@ final class MainModuleBuilder {
         launchViewController.set(viewModel)
         
         return launchViewController
+    }
+    
+    static func assemblyKitchenCategoryViewController(kitchenCategory: KitchenCategory, dishesCategory: DishesCategory, router: MainRouter) -> UIViewController {
+        let viewModel = KitchenCategoryViewModel(kitchenCategory: kitchenCategory, dishesCategory: dishesCategory, router: router)
+        let kitchenCategoryViewController = KitchenCategoryViewController()
+        
+        kitchenCategoryViewController.set(viewModel)
+        
+        let navigationController = UINavigationController(rootViewController: kitchenCategoryViewController)
+        
+        return navigationController
     }
 }

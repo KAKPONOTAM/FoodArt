@@ -15,6 +15,10 @@ final class LaunchViewModel {
                 let kitchenCategory: KitchenCategory = try await networkManager.downloadData(.foodCategoryLink)
                 let dishesCategory: DishesCategory = try await networkManager.downloadData(.dishesLink)
                 
+                await MainActor.run {
+                    router.presentKitchenCategoryViewController(kitchenCategory: kitchenCategory, dishesCategory: dishesCategory)
+                }
+                
             } catch let error as NetworkError {
                 print(error.localizedDescription)
             }
