@@ -10,7 +10,7 @@ final class KitchenCategoryViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.backgroundColor = .white
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.register(KitchenCategoryCollectionViewCell.self, forCellWithReuseIdentifier: KitchenCategoryCollectionViewCell.reuseIdentifier)
         
         return collectionView
     }()
@@ -49,8 +49,7 @@ extension KitchenCategoryViewController: UICollectionViewDataSource, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .red
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KitchenCategoryCollectionViewCell.reuseIdentifier, for: indexPath) as? KitchenCategoryCollectionViewCell else { return UICollectionViewCell() }
         
         return cell
     }
