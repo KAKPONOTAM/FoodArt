@@ -9,7 +9,7 @@ final class AppBuilder {
     }
     
     func createMainModule() {
-        window?.rootViewController = router.start()
+        window?.rootViewController = router.controller
         window?.backgroundColor = .white
         window?.makeKeyAndVisible()
     }
