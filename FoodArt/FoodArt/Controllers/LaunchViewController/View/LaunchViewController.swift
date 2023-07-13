@@ -8,25 +8,42 @@ final class LaunchViewController: UIViewController {
         let imageView = UIImageView(.launchImage)
         imageView.tintColor = .white
         imageView.contentMode = .scaleAspectFit
+        
         return imageView
+    }()
+    
+    private let activityIndicator: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: .large)
+        indicator.color = .white
+        indicator.startAnimating()
+        
+        return indicator
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        view.backgroundColor = .black
-        
         addSubview()
         setupConstraints()
+        viewModel?.downloadInfo()
+        
+        view.backgroundColor = .black
     }
 }
 
 extension LaunchViewController {
     private func addSubview() {
         view.addSubview(launchImageView)
+        view.addSubview(activityIndicator)
+        
+        view.bringSubviewToFront(activityIndicator)
     }
     
     private func setupConstraints() {
         launchImageView.snp.makeConstraints {
+            $0.edges.equalToSuperview()
+        }
+        
+        activityIndicator.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
     }
