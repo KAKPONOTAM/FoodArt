@@ -4,7 +4,7 @@ struct DishesCategory: Codable {
     let dishes: [Dish]
 }
 
-struct Dish: Codable {
+struct Dish: Codable, Hashable {
     let id: Int
     let name: String
     let price: Int
