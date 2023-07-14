@@ -15,11 +15,11 @@ final class MainModuleBuilder {
     
     static func assemblyMainViewController(kitchenCategoryDownloadedInfo: DownloadedInfo<KitchenCategory>, dishesCategoryDownloadedInfo: DownloadedInfo<DishesCategory>, router: MainRouter) -> UIViewController {
         let kitchenCategoryViewController = assemblyKitchenCategoryViewController(kitchenCategoryDownloadedInfo: kitchenCategoryDownloadedInfo, dishesCategoryDownloadedInfo: dishesCategoryDownloadedInfo, router: router)
+        let binViewController = assemblyBinViewController()
+        
         let tabBarViewController = UITabBarController()
         
-        kitchenCategoryViewController.tabBarItem = UITabBarItem(title: ModuleTitles.mainTitle.title, image: ModuleImages.mainSegmentIcon.icon, selectedImage: ModuleImages.mainSegmentIcon.icon.withTintColor(UIColor(.customBlue) ?? .black))
-        
-        tabBarViewController.viewControllers = [kitchenCategoryViewController]
+        tabBarViewController.viewControllers = [kitchenCategoryViewController, binViewController]
         let navigationController = UINavigationController(rootViewController: tabBarViewController)
         
         return navigationController
@@ -41,8 +41,21 @@ extension MainModuleBuilder {
         let viewModel = KitchenCategoryViewModel(kitchenCategoryDownloadedInfo: kitchenCategoryDownloadedInfo, dishesCategoryDownloadedInfo: dishesCategoryDownloadedInfo, router: router)
         let kitchenCategoryViewController = KitchenCategoryViewController()
         
+        kitchenCategoryViewController.tabBarItem = UITabBarItem(title: ModuleTitles.mainTitle.title, image: ModuleImages.mainSegmentIcon.icon, selectedImage: ModuleImages.mainSegmentIcon.icon.withTintColor(UIColor(.customBlue) ?? .black))
         kitchenCategoryViewController.set(viewModel)
         
         return kitchenCategoryViewController
+    }
+    
+    private static func assemblyBinViewController() -> UIViewController {
+        let binViewController = BinViewController()
+        let binViewModel = BinViewModel()
+        
+        binViewController.set(binViewModel)
+        binViewController.tabBarItem = UITabBarItem(title: ModuleTitles.binTitle.title, image: ModuleImages.binSegmentIcon.icon, selectedImage: ModuleImages.binSegmentIcon.icon.withTintColor(UIColor(.customBlue) ?? .black))
+        
+        let navigationController = UINavigationController(rootViewController: binViewController)
+        
+        return navigationController
     }
 }
