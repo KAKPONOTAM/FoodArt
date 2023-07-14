@@ -6,16 +6,23 @@ final class DishesCategoryViewController: UIViewController {
     
     private lazy var dishesCategoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 30
+        layout.minimumInteritemSpacing = 8
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        collectionView.backgroundColor = .white
+        collectionView.register(DishesCategoryCollectionViewCell.self, forCellWithReuseIdentifier: DishesCategoryCollectionViewCell.reuseIdentifier)
         
         return collectionView
     }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        addSubview()
+        setupConstraints()
+        
+        view.backgroundColor = .white
     }
 }
 
@@ -38,18 +45,22 @@ extension DishesCategoryViewController: UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishesCategoryCollectionViewCell.reuseIdentifier, for: indexPath) as? DishesCategoryCollectionViewCell,
+              let viewModel else { return UICollectionViewCell() }
         
+        let dish = viewModel.dishesCategoryDownloadedInfo.downloadedInfo.dishes[indexPath.item]
+        let image = viewModel.dishesCategoryDownloadedInfo.images[indexPath.item]
+        
+        cell.configure(with: dish, image: image)
+            
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: collectionView.frame.width / 3, height: 130)
+        return CGSize(width: (collectionView.frame.width / 3) - 8, height: 130)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
-    }
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {}
 }
 
 extension DishesCategoryViewController: ViewModelSetterProtocol {

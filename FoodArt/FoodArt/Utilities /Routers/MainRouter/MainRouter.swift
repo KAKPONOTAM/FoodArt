@@ -19,7 +19,9 @@ extension MainRouter {
     func pushDishesViewController(dishesCategoryDownloadedInfo: DownloadedInfo<DishesCategory>) {
         let dishesViewController = MainModuleBuilder.assemblyDishesCategoryViewController(dishesCategoryDownloadedInfo: dishesCategoryDownloadedInfo, router: self)
         
-        controller.navigationController?.pushViewController(dishesViewController, animated: true)
+        if let navigationController = controller as? UINavigationController {
+            navigationController.pushViewController(dishesViewController, animated: true)
+        }
     }
 }
 
