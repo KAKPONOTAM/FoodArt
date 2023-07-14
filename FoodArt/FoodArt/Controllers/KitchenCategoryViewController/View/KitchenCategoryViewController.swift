@@ -32,7 +32,7 @@ extension KitchenCategoryViewController {
     private func setupConstraints() {
         kitchenCategoryCollectionView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.leading.trailing.equalToSuperview().inset(KitchenCategoryViewConstants.kitchenCategoryCollectionViewSideInset)
         }
     }
 }
@@ -62,6 +62,6 @@ extension KitchenCategoryViewController: UICollectionViewDataSource, UICollectio
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: collectionView.frame.width, height: 150)
+        return CGSize(width: collectionView.frame.width, height: KitchenCategoryViewConstants.heightForItem)
     }
 }
