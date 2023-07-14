@@ -7,12 +7,14 @@ final class BinViewController: UIViewController {
         let tableView = UITableView()
         tableView.dataSource = self
         tableView.delegate = self
+        tableView.register(BinTableViewCell.self, forCellReuseIdentifier: BinTableViewCell.reuseIdentifier)
         
         return tableView
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
     }
 }
 
@@ -22,7 +24,10 @@ extension BinViewController: UITableViewDataSource, UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        return UITableViewCell()
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: BinTableViewCell.reuseIdentifier, for: indexPath) as? BinTableViewCell,
+              let viewModel else { return UITableViewCell() }
+        
+        return cell
     }
 }
 
