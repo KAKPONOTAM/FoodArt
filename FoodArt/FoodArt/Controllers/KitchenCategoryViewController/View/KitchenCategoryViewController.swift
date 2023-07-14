@@ -43,7 +43,7 @@ extension KitchenCategoryViewController: ViewModelSetterProtocol {
     }
 }
 
-extension KitchenCategoryViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+extension KitchenCategoryViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return viewModel?.kitchenCategoryDownloadedInfo.downloadedInfo.сategories.count ?? .zero
     }
@@ -63,5 +63,9 @@ extension KitchenCategoryViewController: UICollectionViewDataSource, UICollectio
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
         return CGSize(width: collectionView.frame.width, height: KitchenCategoryViewConstants.heightForItem)
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel?.pushDishesViewController()
     }
 }

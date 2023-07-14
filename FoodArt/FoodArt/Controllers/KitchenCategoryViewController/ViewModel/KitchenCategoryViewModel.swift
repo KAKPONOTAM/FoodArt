@@ -11,4 +11,8 @@ final class KitchenCategoryViewModel {
         self.dishesCategoryDownloadedInfo = dishesCategoryDownloadedInfo
         self.router = router
     }
+    
+    func pushDishesViewController() {
+        
+    }
 }
