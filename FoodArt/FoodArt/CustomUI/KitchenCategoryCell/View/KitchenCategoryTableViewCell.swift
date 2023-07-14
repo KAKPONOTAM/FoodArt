@@ -7,7 +7,7 @@ final class KitchenCategoryCollectionViewCell: UICollectionViewCell {
         label.textAlignment = .left
         label.textColor = .black
         label.numberOfLines = .zero
-        label.font = UIFont(font: .displayRegular, fontSize: 20)
+        label.font = UIFont(font: .displayRegular, fontSize: KitchenCategoryCellConstants.kitchenCategoryLabelFontSize)
         
         return label
     }()
@@ -15,7 +15,7 @@ final class KitchenCategoryCollectionViewCell: UICollectionViewCell {
     private let kitchenCategoryImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.clipsToBounds = true
-        imageView.layer.cornerRadius = 10
+        imageView.layer.cornerRadius = KitchenCategoryCellConstants.kitchenCategoryImageViewCornerRadius
         
         return imageView
     }()
@@ -51,9 +51,9 @@ extension KitchenCategoryCollectionViewCell {
         }
         
         kitchenCategoryLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(12)
-            $0.leading.equalToSuperview().inset(16)
-            $0.width.equalTo(190)
+            $0.top.equalToSuperview().inset(KitchenCategoryCellConstants.kitchenCategoryLabelTopInset)
+            $0.leading.equalToSuperview().inset(KitchenCategoryCellConstants.kitchenCategoryLabelSideInset)
+            $0.width.equalTo(KitchenCategoryCellConstants.kitchenCategoryLabelWidth)
         }
     }
 }
