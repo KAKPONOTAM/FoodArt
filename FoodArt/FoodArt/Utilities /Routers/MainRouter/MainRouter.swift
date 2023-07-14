@@ -2,7 +2,9 @@ import UIKit
 
 final class MainRouter {
     private(set) lazy var controller = MainModuleBuilder.assemblyLaunchViewController(router: self)
-    
+}
+
+extension MainRouter {
     func presentKitchenCategoryViewController(kitchenCategoryDownloadedInfo: DownloadedInfo<KitchenCategory>, dishesCategoryDownloadedInfo: DownloadedInfo<DishesCategory>) {
         controller = MainModuleBuilder.assemblyKitchenCategoryViewController(kitchenCategoryDownloadedInfo: kitchenCategoryDownloadedInfo, dishesCategoryDownloadedInfo: dishesCategoryDownloadedInfo, router: self)
         
@@ -14,7 +16,19 @@ final class MainRouter {
         UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: .none, completion: .none)
     }
     
-    func dismiss(completion: (() -> Void)?) {
+    func pushDishesViewController(dishesCategoryDownloadedInfo: DownloadedInfo<DishesCategory>) {
+        let dishesViewController = MainModuleBuilder.assemblyDishesCategoryViewController(dishesCategoryDownloadedInfo: dishesCategoryDownloadedInfo, router: self)
+        
+        controller.navigationController?.pushViewController(dishesViewController, animated: true)
+    }
+}
+
+extension MainRouter {
+    func dismiss(completion: (() -> Void)? = .none) {
         controller.dismiss(animated: true, completion: completion)
+    }
+    
+    func popViewController() {
+        controller.navigationController?.popViewController(animated: true)
     }
 }

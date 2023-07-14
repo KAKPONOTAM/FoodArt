@@ -21,4 +21,13 @@ final class MainModuleBuilder {
         
         return navigationController
     }
+    
+    static func assemblyDishesCategoryViewController(dishesCategoryDownloadedInfo: DownloadedInfo<DishesCategory>, router: MainRouter) -> UIViewController {
+        let viewModel = DishesCategoryViewModel(dishesCategoryDownloadedInfo: dishesCategoryDownloadedInfo, router: router)
+        let dishesViewController = DishesCategoryViewController()
+        
+        dishesViewController.set(viewModel)
+        
+        return dishesViewController
+    }
 }
