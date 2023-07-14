@@ -11,8 +11,8 @@ final class MainModuleBuilder {
         return launchViewController
     }
     
-    static func assemblyKitchenCategoryViewController(kitchenCategory: KitchenCategory, dishesCategory: DishesCategory, router: MainRouter) -> UIViewController {
-        let viewModel = KitchenCategoryViewModel(kitchenCategory: kitchenCategory, dishesCategory: dishesCategory, router: router)
+    static func assemblyKitchenCategoryViewController(kitchenCategoryDownloadedInfo: DownloadedInfo<KitchenCategory>, dishesCategoryDownloadedInfo: DownloadedInfo<DishesCategory>, router: MainRouter) -> UIViewController {
+        let viewModel = KitchenCategoryViewModel(kitchenCategoryDownloadedInfo: kitchenCategoryDownloadedInfo, dishesCategoryDownloadedInfo: dishesCategoryDownloadedInfo, router: router)
         let kitchenCategoryViewController = KitchenCategoryViewController()
         
         kitchenCategoryViewController.set(viewModel)

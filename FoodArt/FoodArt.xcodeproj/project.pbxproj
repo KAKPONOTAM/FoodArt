@@ -33,6 +33,7 @@
 		669409992A602359009D0C32 /* DishesCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669409982A602359009D0C32 /* DishesCategory.swift */; };
 		6694099F2A603A76009D0C32 /* KitchenCategoryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6694099E2A603A76009D0C32 /* KitchenCategoryViewController.swift */; };
 		669409A12A603A98009D0C32 /* KitchenCategoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 669409A02A603A98009D0C32 /* KitchenCategoryViewModel.swift */; };
+		66B82E352A60696C00B50A8C /* Helpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B82E342A60696C00B50A8C /* Helpers.swift */; };
 		B14EA6378D2E9ABC92BE5BB8 /* Pods_FoodArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A7B1D61492366995F488C9 /* Pods_FoodArt.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		669409982A602359009D0C32 /* DishesCategory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesCategory.swift; sourceTree = "<group>"; };
 		6694099E2A603A76009D0C32 /* KitchenCategoryViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitchenCategoryViewController.swift; sourceTree = "<group>"; };
 		669409A02A603A98009D0C32 /* KitchenCategoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KitchenCategoryViewModel.swift; sourceTree = "<group>"; };
+		66B82E342A60696C00B50A8C /* Helpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Helpers.swift; sourceTree = "<group>"; };
 		80B7EFEE6FC990F6318B2FDE /* Pods-FoodArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodArt.debug.xcconfig"; path = "Target Support Files/Pods-FoodArt/Pods-FoodArt.debug.xcconfig"; sourceTree = "<group>"; };
 		BE423CFF8F80B70E699F4A14 /* Pods-FoodArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodArt.release.xcconfig"; path = "Target Support Files/Pods-FoodArt/Pods-FoodArt.release.xcconfig"; sourceTree = "<group>"; };
 		E2A7B1D61492366995F488C9 /* Pods_FoodArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,13 @@
 				BE423CFF8F80B70E699F4A14 /* Pods-FoodArt.release.xcconfig */,
 			);
 			path = Pods;
+			sourceTree = "<group>";
+		};
+		6606AF1C2A60649A00620F8E /* DataModels */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = DataModels;
 			sourceTree = "<group>";
 		};
 		6627DBCF2A60524A001AEB75 /* CustomUI */ = {
@@ -233,6 +242,7 @@
 		669409582A600AF9009D0C32 /* Utilities  */ = {
 			isa = PBXGroup;
 			children = (
+				66B82E332A60696200B50A8C /* Helpers */,
 				6627DBD52A6052E5001AEB75 /* Fonts */,
 				669409802A601515009D0C32 /* Routers */,
 				669409632A600CAD009D0C32 /* Wrappers */,
@@ -415,6 +425,7 @@
 		6694098F2A602099009D0C32 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				6606AF1C2A60649A00620F8E /* DataModels */,
 				669409932A60212A009D0C32 /* FetchModels */,
 				6694098B2A601BE3009D0C32 /* ErrorModels */,
 			);
@@ -477,6 +488,14 @@
 				6694099E2A603A76009D0C32 /* KitchenCategoryViewController.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		66B82E332A60696200B50A8C /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				66B82E342A60696C00B50A8C /* Helpers.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -613,6 +632,7 @@
 				669409722A600D55009D0C32 /* Dictionary.swift in Sources */,
 				669409652A600CC7009D0C32 /* NetworkManager.swift in Sources */,
 				6627DBD42A60526C001AEB75 /* KitchenCategoryTableViewCell.swift in Sources */,
+				66B82E352A60696C00B50A8C /* Helpers.swift in Sources */,
 				669409972A60224D009D0C32 /* KitchenCategory.swift in Sources */,
 				669409992A602359009D0C32 /* DishesCategory.swift in Sources */,
 				66594F382A6007AC00D2D7E8 /* AppDelegate.swift in Sources */,

@@ -14,6 +14,7 @@ final class KitchenCategoryCollectionViewCell: UICollectionViewCell {
     
     private let kitchenCategoryImageView: UIImageView = {
         let imageView = UIImageView()
+        imageView.clipsToBounds = true
         imageView.layer.cornerRadius = 10
         
         return imageView
@@ -28,6 +29,11 @@ final class KitchenCategoryCollectionViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         return nil
     }
+    
+    func configure(with category: FoodCategory, image: UIImage?) {
+        kitchenCategoryImageView.image = image
+        kitchenCategoryLabel.text = category.name
+    }
 }
 
 extension KitchenCategoryCollectionViewCell {
@@ -35,10 +41,11 @@ extension KitchenCategoryCollectionViewCell {
         contentView.addSubview(kitchenCategoryLabel)
         contentView.addSubview(kitchenCategoryImageView)
         
-        kitchenCategoryLabel.bringSubviewToFront(kitchenCategoryLabel)
+        contentView.bringSubviewToFront(kitchenCategoryLabel)
     }
     
     private func setupConstraints() {
+        
         kitchenCategoryImageView.snp.makeConstraints {
             $0.edges.equalToSuperview()
         }
@@ -46,6 +53,7 @@ extension KitchenCategoryCollectionViewCell {
         kitchenCategoryLabel.snp.makeConstraints {
             $0.top.equalToSuperview().inset(12)
             $0.leading.equalToSuperview().inset(16)
+            $0.width.equalTo(190)
         }
     }
 }
