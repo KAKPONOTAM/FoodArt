@@ -45,17 +45,23 @@ extension KitchenCategoryViewController: ViewModelSetterProtocol {
 
 extension KitchenCategoryViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.kitchenCategory.сategories.count ?? .zero
+        return viewModel?.kitchenCategoryDownloadedInfo.downloadedInfo.сategories.count ?? .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KitchenCategoryCollectionViewCell.reuseIdentifier, for: indexPath) as? KitchenCategoryCollectionViewCell else { return UICollectionViewCell() }
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: KitchenCategoryCollectionViewCell.reuseIdentifier, for: indexPath) as? KitchenCategoryCollectionViewCell,
+              let viewModel else { return UICollectionViewCell() }
+        
+        let kitchenCategory = viewModel.kitchenCategoryDownloadedInfo.downloadedInfo.сategories[indexPath.row]
+        let image = viewModel.kitchenCategoryDownloadedInfo.images[indexPath.row]
+        
+        cell.configure(with: kitchenCategory, image: image)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        return CGSize(width: view.frame.width, height: 150)
+        return CGSize(width: collectionView.frame.width, height: 150)
     }
 }

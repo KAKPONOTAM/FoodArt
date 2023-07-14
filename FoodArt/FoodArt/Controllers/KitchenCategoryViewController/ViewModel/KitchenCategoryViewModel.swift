@@ -3,12 +3,12 @@ import Foundation
 final class KitchenCategoryViewModel {
     private let router: MainRouter
     
-    let kitchenCategory: KitchenCategory
-    let dishesCategory: DishesCategory
+    let kitchenCategoryDownloadedInfo: DownloadedInfo<KitchenCategory>
+    let dishesCategoryDownloadedInfo: DownloadedInfo<DishesCategory>
     
-    init(kitchenCategory: KitchenCategory, dishesCategory: DishesCategory, router: MainRouter) {
-        self.kitchenCategory = kitchenCategory
-        self.dishesCategory = dishesCategory
+    init(kitchenCategoryDownloadedInfo: DownloadedInfo<KitchenCategory>, dishesCategoryDownloadedInfo: DownloadedInfo<DishesCategory>, router: MainRouter) {
+        self.kitchenCategoryDownloadedInfo = kitchenCategoryDownloadedInfo
+        self.dishesCategoryDownloadedInfo = dishesCategoryDownloadedInfo
         self.router = router
     }
 }

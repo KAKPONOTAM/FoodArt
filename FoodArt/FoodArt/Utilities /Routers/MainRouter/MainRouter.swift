@@ -3,8 +3,8 @@ import UIKit
 final class MainRouter {
     private(set) lazy var controller = MainModuleBuilder.assemblyLaunchViewController(router: self)
     
-    func presentKitchenCategoryViewController(kitchenCategory: KitchenCategory, dishesCategory: DishesCategory) {
-        controller = MainModuleBuilder.assemblyKitchenCategoryViewController(kitchenCategory: kitchenCategory, dishesCategory: dishesCategory, router: self)
+    func presentKitchenCategoryViewController(kitchenCategoryDownloadedInfo: DownloadedInfo<KitchenCategory>, dishesCategoryDownloadedInfo: DownloadedInfo<DishesCategory>) {
+        controller = MainModuleBuilder.assemblyKitchenCategoryViewController(kitchenCategoryDownloadedInfo: kitchenCategoryDownloadedInfo, dishesCategoryDownloadedInfo: dishesCategoryDownloadedInfo, router: self)
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
               let window = appDelegate.window else { return }
