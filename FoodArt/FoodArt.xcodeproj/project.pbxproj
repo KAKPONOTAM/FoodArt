@@ -42,6 +42,8 @@
 		66B82E5F2A61631100B50A8C /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B82E5E2A61631100B50A8C /* UIColor.swift */; };
 		66B82E642A616A0D00B50A8C /* ModuleImages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B82E632A616A0D00B50A8C /* ModuleImages.swift */; };
 		66B82E672A6175E700B50A8C /* ModuleTitles.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B82E662A6175E700B50A8C /* ModuleTitles.swift */; };
+		66B82E6D2A6177B600B50A8C /* BinViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B82E6C2A6177B600B50A8C /* BinViewController.swift */; };
+		66B82E702A6177CC00B50A8C /* BinViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B82E6F2A6177CC00B50A8C /* BinViewModel.swift */; };
 		B14EA6378D2E9ABC92BE5BB8 /* Pods_FoodArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A7B1D61492366995F488C9 /* Pods_FoodArt.framework */; };
 /* End PBXBuildFile section */
 
@@ -83,6 +85,8 @@
 		66B82E5E2A61631100B50A8C /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		66B82E632A616A0D00B50A8C /* ModuleImages.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleImages.swift; sourceTree = "<group>"; };
 		66B82E662A6175E700B50A8C /* ModuleTitles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ModuleTitles.swift; sourceTree = "<group>"; };
+		66B82E6C2A6177B600B50A8C /* BinViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinViewController.swift; sourceTree = "<group>"; };
+		66B82E6F2A6177CC00B50A8C /* BinViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BinViewModel.swift; sourceTree = "<group>"; };
 		80B7EFEE6FC990F6318B2FDE /* Pods-FoodArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodArt.debug.xcconfig"; path = "Target Support Files/Pods-FoodArt/Pods-FoodArt.debug.xcconfig"; sourceTree = "<group>"; };
 		BE423CFF8F80B70E699F4A14 /* Pods-FoodArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodArt.release.xcconfig"; path = "Target Support Files/Pods-FoodArt/Pods-FoodArt.release.xcconfig"; sourceTree = "<group>"; };
 		E2A7B1D61492366995F488C9 /* Pods_FoodArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -220,6 +224,7 @@
 		669409532A600ABC009D0C32 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				66B82E682A61779800B50A8C /* BinViewController */,
 				66B82E3A2A6146EF00B50A8C /* DishesCategoryViewController */,
 				6694099A2A603A50009D0C32 /* KitchenCategoryViewController */,
 				669409542A600AC4009D0C32 /* LaunchViewController */,
@@ -602,6 +607,39 @@
 			path = ModuleTitles;
 			sourceTree = "<group>";
 		};
+		66B82E682A61779800B50A8C /* BinViewController */ = {
+			isa = PBXGroup;
+			children = (
+				66B82E6B2A6177A700B50A8C /* View */,
+				66B82E6A2A6177A300B50A8C /* ViewModel */,
+				66B82E692A61779D00B50A8C /* Contants */,
+			);
+			path = BinViewController;
+			sourceTree = "<group>";
+		};
+		66B82E692A61779D00B50A8C /* Contants */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Contants;
+			sourceTree = "<group>";
+		};
+		66B82E6A2A6177A300B50A8C /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				66B82E6F2A6177CC00B50A8C /* BinViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		66B82E6B2A6177A700B50A8C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				66B82E6C2A6177B600B50A8C /* BinViewController.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -717,6 +755,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66B82E702A6177CC00B50A8C /* BinViewModel.swift in Sources */,
 				669409742A600DB5009D0C32 /* Bindable.swift in Sources */,
 				66B82E392A61453600B50A8C /* KitchenCategoryViewConstants.swift in Sources */,
 				6694098E2A601BFA009D0C32 /* NetworkError.swift in Sources */,
@@ -741,6 +780,7 @@
 				669409722A600D55009D0C32 /* Dictionary.swift in Sources */,
 				669409652A600CC7009D0C32 /* NetworkManager.swift in Sources */,
 				66B82E462A614D1800B50A8C /* DishesCategoryCollectionViewCell.swift in Sources */,
+				66B82E6D2A6177B600B50A8C /* BinViewController.swift in Sources */,
 				6627DBD42A60526C001AEB75 /* KitchenCategoryTableViewCell.swift in Sources */,
 				66B82E5F2A61631100B50A8C /* UIColor.swift in Sources */,
 				66B82E352A60696C00B50A8C /* Helpers.swift in Sources */,
