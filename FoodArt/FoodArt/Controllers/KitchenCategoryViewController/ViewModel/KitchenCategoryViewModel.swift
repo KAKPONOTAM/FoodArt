@@ -13,6 +13,6 @@ final class KitchenCategoryViewModel {
     }
     
     func pushDishesViewController() {
-        
+        router.pushDishesViewController(dishesCategoryDownloadedInfo: dishesCategoryDownloadedInfo)
     }
 }
