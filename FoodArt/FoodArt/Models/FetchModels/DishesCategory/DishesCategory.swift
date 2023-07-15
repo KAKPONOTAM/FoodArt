@@ -11,4 +11,5 @@ struct Dish: Codable, Equatable {
     let weight: Int
     let description: String
     let image_url: String
+    let tegs: [String]
 }
