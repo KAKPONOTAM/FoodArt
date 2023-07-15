@@ -60,7 +60,9 @@ extension DishesCategoryViewController: UICollectionViewDataSource, UICollection
         return CGSize(width: (collectionView.frame.width / 3) - 8, height: 130)
     }
     
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {}
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        viewModel?.presentProductViewController(index: indexPath.item)
+    }
 }
 
 extension DishesCategoryViewController: ViewModelSetterProtocol {

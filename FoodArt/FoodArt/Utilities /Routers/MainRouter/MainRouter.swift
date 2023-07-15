@@ -23,6 +23,13 @@ extension MainRouter {
             navigationController.pushViewController(dishesViewController, animated: true)
         }
     }
+    
+    func presentProductViewController(image: UIImage?, dish: Dish) {
+        let productViewController = MainModuleBuilder.assemblyProductViewController(image: image, dish: dish, router: self)
+        productViewController.modalPresentationStyle = .overFullScreen
+        
+        controller.present(productViewController, animated: true)
+    }
 }
 
 extension MainRouter {
