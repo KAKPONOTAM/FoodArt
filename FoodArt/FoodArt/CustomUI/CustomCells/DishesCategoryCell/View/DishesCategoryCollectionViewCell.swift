@@ -5,7 +5,7 @@ final class DishesCategoryCollectionViewCell: UICollectionViewCell {
     private let containerView: UIView = {
         let view = UIView()
         view.backgroundColor = .systemGray6
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = DishesCategoryCellConstants.containerViewCornerRadius
         view.clipsToBounds = true
         
         return view
@@ -24,7 +24,7 @@ final class DishesCategoryCollectionViewCell: UICollectionViewCell {
         label.textColor = .black
         label.numberOfLines = .zero
         label.backgroundColor = .clear
-        label.font = UIFont(font: .displayRegular, fontSize: 14)
+        label.font = UIFont(font: .displayRegular, fontSize: DishesCategoryCellConstants.dishesNameLabelFontSize)
         
         return label
     }()
@@ -56,17 +56,17 @@ extension DishesCategoryCollectionViewCell {
     private func setupConstraints() {
         containerView.snp.makeConstraints {
             $0.top.leading.trailing.equalToSuperview()
-            $0.height.equalTo(110)
+            $0.height.equalTo(DishesCategoryCellConstants.heightForContainerView)
         }
         
         dishesImageView.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(12)
-            $0.leading.trailing.equalToSuperview().inset(8)
+            $0.top.equalToSuperview().inset(DishesCategoryCellConstants.dishesImageViewTopInset)
+            $0.leading.trailing.equalToSuperview().inset(DishesCategoryCellConstants.dishesImageViewSideInset)
             $0.bottom.equalToSuperview()
         }
         
         dishesNameLabel.snp.makeConstraints {
-            $0.top.equalTo(dishesImageView.snp.bottom).offset(5)
+            $0.top.equalTo(dishesImageView.snp.bottom).offset(DishesCategoryCellConstants.dishesNameLabelTopOffset)
             $0.leading.trailing.equalToSuperview()
         }
     }

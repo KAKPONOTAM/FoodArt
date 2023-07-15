@@ -12,7 +12,7 @@ final class BinTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textAlignment = .left
         label.textColor = .black
-        label.font = UIFont(font: .displayRegular, fontSize: 14)
+        label.font = UIFont(font: .displayRegular, fontSize: BinTableViewCellConstants.defaultFontSize)
         
         return label
     }()
@@ -21,7 +21,7 @@ final class BinTableViewCell: UITableViewCell {
         let label = UILabel()
         label.textColor = .black
         label.textAlignment = .left
-        label.font = UIFont(font: .displayRegular, fontSize: 14)
+        label.font = UIFont(font: .displayRegular, fontSize: BinTableViewCellConstants.defaultFontSize)
         
         return label
     }()
@@ -62,18 +62,18 @@ extension BinTableViewCell {
         dishesParametersLabel.setContentHuggingPriority(.defaultHigh, for: .vertical)
         
         selectedDishesImageView.snp.makeConstraints {
-            $0.leading.equalToSuperview().inset(16)
+            $0.leading.equalToSuperview().inset(BinTableViewCellConstants.selectedDishesImageViewSideInset)
             $0.top.bottom.equalToSuperview()
             $0.width.equalTo(selectedDishesImageView.snp.height)
         }
         
         dishesNameLabel.snp.makeConstraints {
-            $0.top.equalToSuperview().inset(15)
-            $0.leading.equalTo(selectedDishesImageView.snp.trailing).offset(8)
+            $0.top.equalToSuperview().inset(BinTableViewCellConstants.dishesNameLabelTopInset)
+            $0.leading.equalTo(selectedDishesImageView.snp.trailing).offset(BinTableViewCellConstants.dishesNameLabelSideOffset)
         }
         
         dishesParametersLabel.snp.makeConstraints {
-            $0.top.equalTo(dishesNameLabel.snp.bottom).offset(4)
+            $0.top.equalTo(dishesNameLabel.snp.bottom).offset(BinTableViewCellConstants.dishesParametersLabelTopOffset)
             $0.leading.equalTo(dishesNameLabel)
         }
     }
