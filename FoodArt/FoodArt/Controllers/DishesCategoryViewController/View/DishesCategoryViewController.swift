@@ -16,17 +16,33 @@ final class DishesCategoryViewController: UIViewController {
         
         return collectionView
     }()
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubview()
         setupConstraints()
         
         view.backgroundColor = .white
+        title = "Азиатская кухня"
+        
+        configureNavigationBar()
+    }
+    
+    @objc
+    private func backButtonTapped() {
+        viewModel?.backButtonTapped()
     }
 }
 
 extension DishesCategoryViewController {
+    private func configureNavigationBar() {
+        let leftBarButton = UIBarButtonItem(image: ModuleImages.leftBarButtonIcon.icon, style: .done, target: self, action: #selector(backButtonTapped))
+        let rightBarButton = UIBarButtonItem(customView: UIImageView(.navigationBarTitleImage))
+        
+        navigationItem.leftBarButtonItem = leftBarButton
+        navigationItem.rightBarButtonItem = rightBarButton
+    }
+    
     private func addSubview() {
         view.addSubview(dishesCategoryCollectionView)
     }
@@ -34,7 +50,8 @@ extension DishesCategoryViewController {
     private func setupConstraints() {
         dishesCategoryCollectionView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(DishCategoryViewConstants.dishesCategoryCollectionViewSideInset)
-            $0.top.bottom.equalToSuperview()
+            $0.bottom.equalToSuperview()
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
         }
     }
 }
@@ -52,7 +69,7 @@ extension DishesCategoryViewController: UICollectionViewDataSource, UICollection
         let image = viewModel.dishesCategoryDownloadedInfo.images[indexPath.item]
         
         cell.configure(with: dish, image: image)
-            
+        
         return cell
     }
     

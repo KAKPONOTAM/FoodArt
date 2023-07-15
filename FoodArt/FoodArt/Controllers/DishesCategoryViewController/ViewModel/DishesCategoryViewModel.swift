@@ -9,14 +9,14 @@ final class DishesCategoryViewModel {
         self.router = router
     }
     
-    func dismiss() {
-        router.dismiss()
-    }
-    
     func presentProductViewController(index: Int) {
         let dish = dishesCategoryDownloadedInfo.downloadedInfo.dishes[index]
         let image = dishesCategoryDownloadedInfo.images[index]
         
         router.presentProductViewController(image: image, dish: dish)
+    }
+    
+    func backButtonTapped() {
+        
     }
 }

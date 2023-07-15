@@ -1,4 +1,5 @@
 import Foundation
+import CoreLocation
 
 final class KitchenCategoryViewModel {
     private let router: MainRouter
@@ -12,7 +13,8 @@ final class KitchenCategoryViewModel {
         self.router = router
     }
     
-    func pushDishesViewController() {
+    func pushDishesViewController(index: Int) {
+        let selectedKitchenCategory = kitchenCategoryDownloadedInfo.downloadedInfo.сategories[index].name
         router.pushDishesViewController(dishesCategoryDownloadedInfo: dishesCategoryDownloadedInfo)
     }
 }

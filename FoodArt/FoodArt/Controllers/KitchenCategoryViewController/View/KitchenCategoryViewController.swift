@@ -9,30 +9,52 @@ final class KitchenCategoryViewController: UIViewController {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.backgroundColor = .white
         collectionView.register(KitchenCategoryCollectionViewCell.self, forCellWithReuseIdentifier: KitchenCategoryCollectionViewCell.reuseIdentifier)
         
         return collectionView
+    }()
+    
+    private let navigationBarTitleView: NavigationBarTitleView = {
+        let view = NavigationBarTitleView()
+        view.backgroundColor = .white
+        
+        return view
     }()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubview()
         setupConstraints()
-        
-        view.backgroundColor = .white
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.navigationController?.setNavigationBarHidden(true, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
 
 extension KitchenCategoryViewController {
     private func addSubview() {
         view.addSubview(kitchenCategoryCollectionView)
+        view.addSubview(navigationBarTitleView)
     }
     
     private func setupConstraints() {
         kitchenCategoryCollectionView.snp.makeConstraints {
-            $0.top.bottom.equalToSuperview()
+            $0.top.equalTo(navigationBarTitleView.snp.bottom).offset(KitchenCategoryViewConstants.kitchenCategoryCollectionViewTopInset)
+            $0.bottom.equalToSuperview()
             $0.leading.trailing.equalToSuperview().inset(KitchenCategoryViewConstants.kitchenCategoryCollectionViewSideInset)
+        }
+        
+        navigationBarTitleView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(KitchenCategoryViewConstants.heightForNavigationBarTitleView)
         }
     }
 }
@@ -66,6 +88,6 @@ extension KitchenCategoryViewController: UICollectionViewDataSource, UICollectio
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        viewModel?.pushDishesViewController()
+        viewModel?.pushDishesViewController(index: indexPath.item)
     }
 }
