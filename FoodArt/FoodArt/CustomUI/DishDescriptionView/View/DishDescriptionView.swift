@@ -96,7 +96,6 @@ final class DishDescriptionView: UIView {
     @objc
     private func addToFavoriteButtonTapped() {
         addToFavoriteButton.isSelected.toggle()
-        
         addToFavoriteButton.tintColor = addToFavoriteButton.isSelected ? .red : .black
     }
 }
@@ -104,7 +103,7 @@ final class DishDescriptionView: UIView {
 extension DishDescriptionView {
     func setDish(_ dish: Dish) {
         dishNameLabel.text = dish.name
-        dishParameterLabel.changeInNeedRangeColor(fullText: "\(dish.price) · \(dish.weight)г", changeText: "· \(dish.weight)г")
+        dishParameterLabel.changeInNeedRangeColor(fullText: "\(dish.price)₽ · \(dish.weight)г", changeText: "· \(dish.weight)г")
         dishDescriptionTextView.text = dish.description
     }
     

@@ -56,6 +56,10 @@
 		66B82E972A62BA8500B50A8C /* DishesCategoryCellConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B82E962A62BA8500B50A8C /* DishesCategoryCellConstants.swift */; };
 		66B82E992A62BB3A00B50A8C /* ProductViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B82E982A62BB3A00B50A8C /* ProductViewConstants.swift */; };
 		66B82E9B2A62BBAD00B50A8C /* DishCategoryViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B82E9A2A62BBAD00B50A8C /* DishCategoryViewConstants.swift */; };
+		66B82EA02A62BF2C00B50A8C /* NavigationBarTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B82E9F2A62BF2C00B50A8C /* NavigationBarTitleView.swift */; };
+		66B82EA32A62C0B500B50A8C /* DateFormatterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B82EA22A62C0B500B50A8C /* DateFormatterManager.swift */; };
+		66B82EA52A62C3F300B50A8C /* NavigationBarTitleViewConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B82EA42A62C3F300B50A8C /* NavigationBarTitleViewConstants.swift */; };
+		66B82EA82A62D25500B50A8C /* TopPaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66B82EA72A62D25500B50A8C /* TopPaddingLabel.swift */; };
 		B14EA6378D2E9ABC92BE5BB8 /* Pods_FoodArt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E2A7B1D61492366995F488C9 /* Pods_FoodArt.framework */; };
 /* End PBXBuildFile section */
 
@@ -111,6 +115,10 @@
 		66B82E962A62BA8500B50A8C /* DishesCategoryCellConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishesCategoryCellConstants.swift; sourceTree = "<group>"; };
 		66B82E982A62BB3A00B50A8C /* ProductViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductViewConstants.swift; sourceTree = "<group>"; };
 		66B82E9A2A62BBAD00B50A8C /* DishCategoryViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCategoryViewConstants.swift; sourceTree = "<group>"; };
+		66B82E9F2A62BF2C00B50A8C /* NavigationBarTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarTitleView.swift; sourceTree = "<group>"; };
+		66B82EA22A62C0B500B50A8C /* DateFormatterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatterManager.swift; sourceTree = "<group>"; };
+		66B82EA42A62C3F300B50A8C /* NavigationBarTitleViewConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationBarTitleViewConstants.swift; sourceTree = "<group>"; };
+		66B82EA72A62D25500B50A8C /* TopPaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopPaddingLabel.swift; sourceTree = "<group>"; };
 		80B7EFEE6FC990F6318B2FDE /* Pods-FoodArt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodArt.debug.xcconfig"; path = "Target Support Files/Pods-FoodArt/Pods-FoodArt.debug.xcconfig"; sourceTree = "<group>"; };
 		BE423CFF8F80B70E699F4A14 /* Pods-FoodArt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FoodArt.release.xcconfig"; path = "Target Support Files/Pods-FoodArt/Pods-FoodArt.release.xcconfig"; sourceTree = "<group>"; };
 		E2A7B1D61492366995F488C9 /* Pods_FoodArt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FoodArt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +167,7 @@
 		6627DBCF2A60524A001AEB75 /* CustomUI */ = {
 			isa = PBXGroup;
 			children = (
+				66B82EA62A62D24500B50A8C /* TopPaddingLabel */,
 				66B82E872A61A08A00B50A8C /* DishDescriptionView */,
 				66B82E722A6179FC00B50A8C /* CustomCells */,
 			);
@@ -325,6 +334,7 @@
 		6694095A2A600B1E009D0C32 /* Managers */ = {
 			isa = PBXGroup;
 			children = (
+				66B82EA12A62C0A900B50A8C /* DateFormatterManager */,
 				669409842A601593009D0C32 /* AppBuilder */,
 				669409622A600C8B009D0C32 /* NetworkManager */,
 			);
@@ -758,6 +768,7 @@
 		66B82E872A61A08A00B50A8C /* DishDescriptionView */ = {
 			isa = PBXGroup;
 			children = (
+				66B82E9C2A62BF0200B50A8C /* NavigationBarTitleView */,
 				66B82E892A61A09400B50A8C /* View */,
 				66B82E882A61A09000B50A8C /* Constants */,
 			);
@@ -786,6 +797,47 @@
 				66B82E902A62B6F700B50A8C /* UILabel.swift */,
 			);
 			path = UILabel;
+			sourceTree = "<group>";
+		};
+		66B82E9C2A62BF0200B50A8C /* NavigationBarTitleView */ = {
+			isa = PBXGroup;
+			children = (
+				66B82E9E2A62BF1C00B50A8C /* View */,
+				66B82E9D2A62BF1800B50A8C /* Constants */,
+			);
+			path = NavigationBarTitleView;
+			sourceTree = "<group>";
+		};
+		66B82E9D2A62BF1800B50A8C /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				66B82EA42A62C3F300B50A8C /* NavigationBarTitleViewConstants.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		66B82E9E2A62BF1C00B50A8C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				66B82E9F2A62BF2C00B50A8C /* NavigationBarTitleView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		66B82EA12A62C0A900B50A8C /* DateFormatterManager */ = {
+			isa = PBXGroup;
+			children = (
+				66B82EA22A62C0B500B50A8C /* DateFormatterManager.swift */,
+			);
+			path = DateFormatterManager;
+			sourceTree = "<group>";
+		};
+		66B82EA62A62D24500B50A8C /* TopPaddingLabel */ = {
+			isa = PBXGroup;
+			children = (
+				66B82EA72A62D25500B50A8C /* TopPaddingLabel.swift */,
+			);
+			path = TopPaddingLabel;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -912,6 +964,7 @@
 				66B82E862A619E9400B50A8C /* ProductViewModel.swift in Sources */,
 				669409702A600D43009D0C32 /* Set.swift in Sources */,
 				66B82E912A62B6F700B50A8C /* UILabel.swift in Sources */,
+				66B82EA82A62D25500B50A8C /* TopPaddingLabel.swift in Sources */,
 				66B82E952A62BA0000B50A8C /* BinTableViewCellConstants.swift in Sources */,
 				66B82E972A62BA8500B50A8C /* DishesCategoryCellConstants.swift in Sources */,
 				669409672A600CDC009D0C32 /* String.swift in Sources */,
@@ -922,6 +975,7 @@
 				66B82E672A6175E700B50A8C /* ModuleTitles.swift in Sources */,
 				6627DBDC2A6053E4001AEB75 /* UIFont.swift in Sources */,
 				66B82E7A2A618C0100B50A8C /* DishesSelectionModel.swift in Sources */,
+				66B82EA02A62BF2C00B50A8C /* NavigationBarTitleView.swift in Sources */,
 				6627DBDF2A605517001AEB75 /* UIView.swift in Sources */,
 				6694097E2A601422009D0C32 /* UIImageView.swift in Sources */,
 				66B82E832A619E6B00B50A8C /* ProductViewController.swift in Sources */,
@@ -934,8 +988,10 @@
 				66B82E642A616A0D00B50A8C /* ModuleImages.swift in Sources */,
 				6694096E2A600D21009D0C32 /* Array.swift in Sources */,
 				6694095D2A600BA3009D0C32 /* ViewModelSetterProtocol.swift in Sources */,
+				66B82EA52A62C3F300B50A8C /* NavigationBarTitleViewConstants.swift in Sources */,
 				669409862A6015A1009D0C32 /* AppBuilder.swift in Sources */,
 				669409A12A603A98009D0C32 /* KitchenCategoryViewModel.swift in Sources */,
+				66B82EA32A62C0B500B50A8C /* DateFormatterManager.swift in Sources */,
 				669409722A600D55009D0C32 /* Dictionary.swift in Sources */,
 				669409652A600CC7009D0C32 /* NetworkManager.swift in Sources */,
 				66B82E462A614D1800B50A8C /* DishesCategoryCollectionViewCell.swift in Sources */,
