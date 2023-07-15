@@ -6,6 +6,7 @@ final class DishesCategoryViewController: UIViewController {
     
     private lazy var foodCategoryView: FoodCategoryView = {
         let view = FoodCategoryView()
+        view.setDelegate(self)
         
         return view
     }()
@@ -63,6 +64,10 @@ extension DishesCategoryViewController {
         viewModel.foodCategoryTitles.bind { [unowned self] in
             foodCategoryView.set($0)
         }
+        
+        viewModel.dishesCategoryDownloadedModels.bind { [unowned self] _ in
+            dishesCategoryCollectionView.reloadData()
+        }
     }
     
     private func configureNavigationBar() {
@@ -82,28 +87,28 @@ extension DishesCategoryViewController {
         dishesCategoryCollectionView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(DishCategoryViewConstants.dishesCategoryCollectionViewSideInset)
             $0.bottom.equalToSuperview()
-            $0.top.equalTo(foodCategoryView.snp.bottom).offset(16)
+            $0.top.equalTo(foodCategoryView.snp.bottom).offset(DishCategoryViewConstants.dishesCategoryCollectionViewSideInset)
         }
         
         foodCategoryView.snp.makeConstraints {
             $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(DishCategoryViewConstants.foodCategoryViewTopOffset)
             $0.leading.trailing.equalToSuperview()
-            $0.height.equalTo(35)
+            $0.height.equalTo(DishCategoryViewConstants.heightForFoodCategoryView)
         }
     }
 }
 
 extension DishesCategoryViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return viewModel?.dishesCategoryDownloadedInfo.downloadedInfo.dishes.count ?? .zero
+        return viewModel?.dishesCategoryDownloadedModels.value.downloadedInfo.dishes.count ?? .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DishesCategoryCollectionViewCell.reuseIdentifier, for: indexPath) as? DishesCategoryCollectionViewCell,
               let viewModel else { return UICollectionViewCell() }
         
-        let dish = viewModel.dishesCategoryDownloadedInfo.downloadedInfo.dishes[indexPath.item]
-        let image = viewModel.dishesCategoryDownloadedInfo.images[indexPath.item]
+        let dish = viewModel.dishesCategoryDownloadedModels.value.downloadedInfo.dishes[indexPath.item]
+        let image = viewModel.dishesCategoryDownloadedModels.value.images[dish.image_url, default: .actions]
         
         cell.configure(with: dish, image: image)
         
@@ -122,5 +127,11 @@ extension DishesCategoryViewController: UICollectionViewDataSource, UICollection
 extension DishesCategoryViewController: ViewModelSetterProtocol {
     func set(_ viewModel: DishesCategoryViewModel) {
         self.viewModel = viewModel
+    }
+}
+
+extension DishesCategoryViewController: FoodCategoryViewDelegate {
+    func didSelect(_ tag: String) {
+        viewModel?.filterTags(tag)
     }
 }
