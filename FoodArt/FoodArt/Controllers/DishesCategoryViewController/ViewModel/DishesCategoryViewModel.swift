@@ -1,12 +1,18 @@
 import Foundation
 
 final class DishesCategoryViewModel {
-    let dishesCategoryDownloadedInfo: DownloadedInfo<DishesCategory>
     private let router: MainRouter
+    private let kitchenCategoryDownloadedInfo: DownloadedInfo<KitchenCategory> //MARK: - saving this data for rechangeRootVC
     
-    init(dishesCategoryDownloadedInfo: DownloadedInfo<DishesCategory>, router: MainRouter) {
+    let dishesCategoryDownloadedInfo: DownloadedInfo<DishesCategory> //MARK: - saving this data for create cells
+    
+    var selectedKitchenCategoryTitle = Bindable<String?>(.none)
+    
+    init(dishesCategoryDownloadedInfo: DownloadedInfo<DishesCategory>, kitchenCategoryDownloadedInfo: DownloadedInfo<KitchenCategory>, router: MainRouter, selectedKitchenCategoryTitle: String?) {
         self.dishesCategoryDownloadedInfo = dishesCategoryDownloadedInfo
+        self.kitchenCategoryDownloadedInfo = kitchenCategoryDownloadedInfo
         self.router = router
+        self.selectedKitchenCategoryTitle.value = selectedKitchenCategoryTitle
     }
     
     func presentProductViewController(index: Int) {
@@ -17,6 +23,6 @@ final class DishesCategoryViewModel {
     }
     
     func backButtonTapped() {
-        
+        router.changeRootViewController(depends: .kitchenCategory(kitchenCategoryDownloadedInfo, dishesCategoryDownloadedInfo))
     }
 }

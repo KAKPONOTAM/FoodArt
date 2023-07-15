@@ -33,7 +33,7 @@ final class LaunchViewModel {
                 let dishesCategoryDownloadedInfo = DownloadedInfo(dishesCategory, dishesCategoryImages)
                 
                 await MainActor.run {
-                    router.presentKitchenCategoryViewController(kitchenCategoryDownloadedInfo: kitchenCategoryDownloadedInfo, dishesCategoryDownloadedInfo: dishesCategoryDownloadedInfo)
+                    router.changeRootViewController(depends: .kitchenCategory(kitchenCategoryDownloadedInfo, dishesCategoryDownloadedInfo))
                 }
                 
             } catch let error as NetworkError {

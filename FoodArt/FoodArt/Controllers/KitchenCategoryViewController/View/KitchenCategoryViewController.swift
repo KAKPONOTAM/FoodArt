@@ -31,11 +31,6 @@ final class KitchenCategoryViewController: UIViewController {
         super.viewWillAppear(animated)
         tabBarController?.navigationController?.setNavigationBarHidden(true, animated: false)
     }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        tabBarController?.navigationController?.setNavigationBarHidden(false, animated: true)
-    }
 }
 
 extension KitchenCategoryViewController {
