@@ -13,24 +13,24 @@ final class LaunchViewModel {
     func downloadInfo() {
         Task {
             do {
-                var kitchenCategoryImages: [UIImage?] = .emptyCollection
-                var dishesCategoryImages: [UIImage?] = .emptyCollection
+                var kitchenCategoryImages: [String: UIImage?] = .emptyCollection
+                var dishesCategoryImages: [String: UIImage?] = .emptyCollection
                 
                 let kitchenCategories: KitchenCategory = try await networkManager.downloadData(.foodCategoryLink)
                 let dishesCategory: DishesCategory = try await networkManager.downloadData(.dishesLink)
                 
                 for kitchenCategory in kitchenCategories.сategories {
                     let kitchenCategoryImage = try await networkManager.downloadImage(urlAbsoluteString: kitchenCategory.image_url)
-                    kitchenCategoryImages.append(kitchenCategoryImage)
+                    kitchenCategoryImages[kitchenCategory.image_url] = kitchenCategoryImage
                 }
                 
                 for dishesCategory in dishesCategory.dishes {
                     let dishesCategoryImage = try await networkManager.downloadImage(urlAbsoluteString: dishesCategory.image_url)
-                    dishesCategoryImages.append(dishesCategoryImage)
+                    dishesCategoryImages[dishesCategory.image_url] = dishesCategoryImage
                 }
                 
-                let kitchenCategoryDownloadedInfo = DownloadedInfo(kitchenCategories, kitchenCategoryImages)
-                let dishesCategoryDownloadedInfo = DownloadedInfo(dishesCategory, dishesCategoryImages)
+                let kitchenCategoryDownloadedInfo = DownloadedInfo(downloadedInfo: kitchenCategories, images: kitchenCategoryImages)
+                let dishesCategoryDownloadedInfo = DownloadedInfo(downloadedInfo: dishesCategory, images: dishesCategoryImages)
                 
                 await MainActor.run {
                     router.changeRootViewController(depends: .kitchenCategory(kitchenCategoryDownloadedInfo, dishesCategoryDownloadedInfo))

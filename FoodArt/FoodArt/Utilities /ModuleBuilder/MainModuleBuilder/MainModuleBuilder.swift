@@ -62,7 +62,7 @@ extension MainModuleBuilder {
     
     private static func assemblyBinViewController() -> UIViewController {
         let binViewController = BinViewController()
-        let binViewModel = BinViewModel(dishesSelectionModels: DishesSelectionModel.selectedModels)
+        let binViewModel = BinViewModel()
         
         binViewController.set(binViewModel)
         binViewController.tabBarItem = UITabBarItem(title: ModuleTitles.binTitle.title, image: ModuleImages.binSegmentIcon.icon, selectedImage: ModuleImages.binSegmentIcon.icon.withTintColor(UIColor(.customBlue) ?? .black))

@@ -9,5 +9,8 @@ extension DishesCategoryViewController {
         
         static let dishesCategoryCollectionViewSideInset: CGFloat = 16
         static let heightForItem: CGFloat = 130
+        
+        static let heightForFoodCategoryView: CGFloat = 35
+        
     }
 }

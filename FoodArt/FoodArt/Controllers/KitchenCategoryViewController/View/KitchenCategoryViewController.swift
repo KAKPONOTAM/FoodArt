@@ -70,7 +70,7 @@ extension KitchenCategoryViewController: UICollectionViewDataSource, UICollectio
               let viewModel else { return UICollectionViewCell() }
         
         let kitchenCategory = viewModel.kitchenCategoryDownloadedInfo.downloadedInfo.сategories[indexPath.row]
-        let image = viewModel.kitchenCategoryDownloadedInfo.images[indexPath.row]
+        let image = viewModel.kitchenCategoryDownloadedInfo.images[kitchenCategory.image_url, default: .actions]
         
         cell.configure(with: kitchenCategory, image: image)
         

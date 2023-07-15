@@ -1,8 +1,13 @@
 import UIKit
 import SnapKit
 
+protocol FoodCategoryViewDelegate: AnyObject {
+    func didSelect(_ tag: String)
+}
+
 final class FoodCategoryView: UIView {
-    private var foodCategoryTitles: [String] = .emptyCollection
+    private var foodCategoryTags: [String] = .emptyCollection
+    private weak var delegate: FoodCategoryViewDelegate?
     
     private lazy var foodCategoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -26,8 +31,15 @@ final class FoodCategoryView: UIView {
         return nil
     }
     
-    func set(_ foodCategoryTitles: [String]) {
-        self.foodCategoryTitles = foodCategoryTitles
+    func set(_ foodCategoryTags: [String]) {
+        self.foodCategoryTags = foodCategoryTags
+        
+        let indexPath = IndexPath(item: .zero, section: .zero)
+        foodCategoryCollectionView.selectItem(at: indexPath, animated: true, scrollPosition: .bottom)
+    }
+    
+    func setDelegate(_ delegate: FoodCategoryViewDelegate?) {
+        self.delegate = delegate
     }
 }
 
@@ -39,36 +51,31 @@ extension FoodCategoryView {
     private func setupConstraints() {
         foodCategoryCollectionView.snp.makeConstraints {
             $0.top.bottom.equalToSuperview()
-            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.leading.trailing.equalToSuperview().inset(FoodCategoryViewConstants.foodCategoryCollectionViewSideInset)
         }
     }
 }
 
 extension FoodCategoryView: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return foodCategoryTitles.count
+        return foodCategoryTags.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FoodCategoryCollectionViewCell.reuseIdentifier, for: indexPath) as? FoodCategoryCollectionViewCell else { return UICollectionViewCell() }
         
-        let foodCategoryTitle = foodCategoryTitles[indexPath.item]
+        let foodCategoryTitle = foodCategoryTags[indexPath.item]
         cell.configure(with: foodCategoryTitle)
         
         return cell
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: 100, height: collectionView.frame.height)
+        return CGSize(width: FoodCategoryViewConstants.heightForItem, height: collectionView.frame.height)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as? FoodCategoryCollectionViewCell
-        cell?.configureSelectedCell()
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        let cell = collectionView.cellForItem(at: indexPath) as? FoodCategoryCollectionViewCell
-        cell?.configureDeselectedCell()
+        let selectedTag = foodCategoryTags[indexPath.item]
+        delegate?.didSelect(selectedTag)
     }
 }
