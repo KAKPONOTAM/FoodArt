@@ -5,8 +5,8 @@ final class MainRouter {
 }
 
 extension MainRouter {
-    func presentKitchenCategoryViewController(kitchenCategoryDownloadedInfo: DownloadedInfo<KitchenCategory>, dishesCategoryDownloadedInfo: DownloadedInfo<DishesCategory>) {
-        controller = MainModuleBuilder.assemblyMainViewController(kitchenCategoryDownloadedInfo: kitchenCategoryDownloadedInfo, dishesCategoryDownloadedInfo: dishesCategoryDownloadedInfo, router: self)
+    func changeRootViewController(depends coordinator: RootViewControllerCoordinator) {
+        controller = MainModuleBuilder.assemblyMainViewController(depends: coordinator, router: self)
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
               let window = appDelegate.window else { return }
@@ -14,14 +14,6 @@ extension MainRouter {
         appDelegate.appBuilder?.createMainModule()
         
         UIView.transition(with: window, duration: 0.5, options: .transitionCrossDissolve, animations: .none, completion: .none)
-    }
-    
-    func pushDishesViewController(dishesCategoryDownloadedInfo: DownloadedInfo<DishesCategory>) {
-        let dishesViewController = MainModuleBuilder.assemblyDishesCategoryViewController(dishesCategoryDownloadedInfo: dishesCategoryDownloadedInfo, router: self)
-        
-        if let navigationController = controller as? UINavigationController {
-            navigationController.pushViewController(dishesViewController, animated: true)
-        }
     }
     
     func presentProductViewController(image: UIImage?, dish: Dish) {

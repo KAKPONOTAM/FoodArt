@@ -21,11 +21,20 @@ final class DishesCategoryViewController: UIViewController {
         super.viewDidLoad()
         addSubview()
         setupConstraints()
+        configureNavigationBar()
+        bind()
         
         view.backgroundColor = .white
-        title = "Азиатская кухня"
-        
-        configureNavigationBar()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        tabBarController?.navigationController?.setNavigationBarHidden(false, animated: false)
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        tabBarController?.navigationController?.setNavigationBarHidden(true, animated: false)
     }
     
     @objc
@@ -35,12 +44,23 @@ final class DishesCategoryViewController: UIViewController {
 }
 
 extension DishesCategoryViewController {
+    private func bind() {
+        guard let viewModel else { return }
+        
+        viewModel.selectedKitchenCategoryTitle.bind { [unowned self] selectedKitchenCategoryTitle in
+            guard let selectedKitchenCategoryTitle,
+                  !selectedKitchenCategoryTitle.isEmpty else { return }
+            
+            tabBarController?.navigationItem.title = selectedKitchenCategoryTitle
+        }
+    }
+    
     private func configureNavigationBar() {
         let leftBarButton = UIBarButtonItem(image: ModuleImages.leftBarButtonIcon.icon, style: .done, target: self, action: #selector(backButtonTapped))
         let rightBarButton = UIBarButtonItem(customView: UIImageView(.navigationBarTitleImage))
         
-        navigationItem.leftBarButtonItem = leftBarButton
-        navigationItem.rightBarButtonItem = rightBarButton
+        tabBarController?.navigationItem.leftBarButtonItem = leftBarButton
+        tabBarController?.navigationItem.rightBarButtonItem = rightBarButton
     }
     
     private func addSubview() {
@@ -51,7 +71,7 @@ extension DishesCategoryViewController {
         dishesCategoryCollectionView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(DishCategoryViewConstants.dishesCategoryCollectionViewSideInset)
             $0.bottom.equalToSuperview()
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(10)
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(DishCategoryViewConstants.dishesCategoryCollectionViewTopOffset)
         }
     }
 }

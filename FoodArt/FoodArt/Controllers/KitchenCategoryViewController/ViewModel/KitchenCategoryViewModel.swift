@@ -15,6 +15,6 @@ final class KitchenCategoryViewModel {
     
     func pushDishesViewController(index: Int) {
         let selectedKitchenCategory = kitchenCategoryDownloadedInfo.downloadedInfo.сategories[index].name
-        router.pushDishesViewController(dishesCategoryDownloadedInfo: dishesCategoryDownloadedInfo)
+        router.changeRootViewController(depends: .dishesCategory(kitchenCategoryDownloadedInfo, dishesCategoryDownloadedInfo, title: selectedKitchenCategory))
     }
 }
