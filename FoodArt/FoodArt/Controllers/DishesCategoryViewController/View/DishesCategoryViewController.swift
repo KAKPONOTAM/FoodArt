@@ -4,6 +4,12 @@ import SnapKit
 final class DishesCategoryViewController: UIViewController {
     private var viewModel: DishesCategoryViewModel?
     
+    private lazy var foodCategoryView: FoodCategoryView = {
+        let view = FoodCategoryView()
+        
+        return view
+    }()
+    
     private lazy var dishesCategoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = DishCategoryViewConstants.dishesCategoryCollectionViewMinimumLineSpacing
@@ -53,6 +59,10 @@ extension DishesCategoryViewController {
             
             tabBarController?.navigationItem.title = selectedKitchenCategoryTitle
         }
+        
+        viewModel.foodCategoryTitles.bind { [unowned self] in
+            foodCategoryView.set($0)
+        }
     }
     
     private func configureNavigationBar() {
@@ -65,13 +75,20 @@ extension DishesCategoryViewController {
     
     private func addSubview() {
         view.addSubview(dishesCategoryCollectionView)
+        view.addSubview(foodCategoryView)
     }
     
     private func setupConstraints() {
         dishesCategoryCollectionView.snp.makeConstraints {
             $0.leading.trailing.equalToSuperview().inset(DishCategoryViewConstants.dishesCategoryCollectionViewSideInset)
             $0.bottom.equalToSuperview()
-            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(DishCategoryViewConstants.dishesCategoryCollectionViewTopOffset)
+            $0.top.equalTo(foodCategoryView.snp.bottom).offset(16)
+        }
+        
+        foodCategoryView.snp.makeConstraints {
+            $0.top.equalTo(view.safeAreaLayoutGuide.snp.top).offset(DishCategoryViewConstants.foodCategoryViewTopOffset)
+            $0.leading.trailing.equalToSuperview()
+            $0.height.equalTo(35)
         }
     }
 }
