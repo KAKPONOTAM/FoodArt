@@ -7,7 +7,7 @@ final class ProductViewController: UIViewController {
     private lazy var dishDescriptionView: DishDescriptionView = {
         let view = DishDescriptionView()
         view.backgroundColor = .white
-        view.layer.cornerRadius = 10
+        view.layer.cornerRadius = ProductViewConstants.dishDescriptionViewCornerRadius
         view.setDelegate(self)
         
         return view
@@ -32,7 +32,7 @@ extension ProductViewController {
         dishDescriptionView.snp.makeConstraints {
             $0.centerY.equalToSuperview()
             $0.height.equalToSuperview().dividedBy(1.82)
-            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.leading.trailing.equalToSuperview().inset(ProductViewConstants.dishDescriptionViewSideInset)
         }
     }
     

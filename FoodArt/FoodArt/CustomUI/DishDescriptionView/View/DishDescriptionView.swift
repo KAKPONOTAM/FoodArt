@@ -11,7 +11,7 @@ final class DishDescriptionView: UIView {
     private let dishImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFit
-        imageView.layer.cornerRadius = 10
+        imageView.layer.cornerRadius = DishDescriptionViewConstants.dishImageViewCornerRadius
         imageView.isUserInteractionEnabled = true
         imageView.backgroundColor = UIColor(.lightBackgroundColor)
         
@@ -21,29 +21,31 @@ final class DishDescriptionView: UIView {
     private lazy var dismissButton: UIButton = {
         let button = UIButton()
         button.setImage(ModuleImages.dismissImage.icon, for: .normal)
-        button.layer.cornerRadius = 8
+        button.layer.cornerRadius = DishDescriptionViewConstants.defaultCornerRadius
         button.addTarget(self, action: #selector(dismissButtonTapped), for: .touchUpInside)
         button.backgroundColor = .white
         
         return button
     }()
     
-    private let addToFavoriteButton: UIButton = {
+    private lazy var addToFavoriteButton: UIButton = {
         let button = UIButton()
         button.setImage(ModuleImages.heartImage.icon, for: .normal)
-        button.layer.cornerRadius = 8
+        button.layer.cornerRadius = DishDescriptionViewConstants.defaultCornerRadius
         button.backgroundColor = .white
+        button.tintColor = .black
+        button.addTarget(self, action: #selector(addToFavoriteButtonTapped), for: .touchUpInside)
         
         return button
     }()
     
     private let addDishButton: UIButton = {
         let button = UIButton()
-        button.setTitle("Добавить в корзину", for: .normal)
-        button.titleLabel?.font = UIFont(font: .displayRegular, fontSize: 16)
+        button.setTitle(ModuleTitles.addDishTitle.title, for: .normal)
+        button.titleLabel?.font = UIFont(font: .displayRegular, fontSize: DishDescriptionViewConstants.addDishButtonFontSize)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(.customBlue)
-        button.layer.cornerRadius = 10
+        button.layer.cornerRadius = DishDescriptionViewConstants.addDishButtonCornerRadius
         
         return button
     }()
@@ -52,7 +54,7 @@ final class DishDescriptionView: UIView {
         let label = UILabel()
         label.textAlignment = .left
         label.textColor = .black
-        label.font = UIFont(font: .displayRegular, fontSize: 16)
+        label.font = UIFont(font: .displayRegular, fontSize: DishDescriptionViewConstants.defaultFontSize)
         
         return label
     }()
@@ -61,14 +63,14 @@ final class DishDescriptionView: UIView {
         let label = UILabel()
         label.textAlignment = .left
         label.textColor = .black
-        label.font = UIFont(font: .displayRegular, fontSize: 16)
+        label.font = UIFont(font: .displayRegular, fontSize: DishDescriptionViewConstants.defaultFontSize)
         
         return label
     }()
     
     private let dishDescriptionTextView: UITextView = {
         let textView = UITextView()
-        textView.font = UIFont(font: .displayRegular, fontSize: 14)
+        textView.font = UIFont(font: .displayRegular, fontSize: DishDescriptionViewConstants.dishDescriptionTextViewFontSize)
         textView.textColor = UIColor(.customLightGray)
         textView.isEditable = false
         textView.showsVerticalScrollIndicator = false
@@ -90,12 +92,19 @@ final class DishDescriptionView: UIView {
     private func dismissButtonTapped() {
         delegate?.dismissButtonTapped()
     }
+    
+    @objc
+    private func addToFavoriteButtonTapped() {
+        addToFavoriteButton.isSelected.toggle()
+        
+        addToFavoriteButton.tintColor = addToFavoriteButton.isSelected ? .red : .black
+    }
 }
 
 extension DishDescriptionView {
     func setDish(_ dish: Dish) {
         dishNameLabel.text = dish.name
-        dishParameterLabel.text = "\(dish.price) \(dish.weight)"
+        dishParameterLabel.changeInNeedRangeColor(fullText: "\(dish.price) · \(dish.weight)г", changeText: "· \(dish.weight)г")
         dishDescriptionTextView.text = dish.description
     }
     
@@ -122,42 +131,42 @@ extension DishDescriptionView {
     
     private func setupConstraints() {
         dishImageView.snp.makeConstraints {
-            $0.top.leading.trailing.equalToSuperview().inset(16)
+            $0.top.leading.trailing.equalToSuperview().inset(DishDescriptionViewConstants.dishImageViewSideInset)
             $0.height.equalToSuperview().multipliedBy(0.5)
         }
         
         dishNameLabel.snp.makeConstraints {
-            $0.top.equalTo(dishImageView.snp.bottom).offset(8)
+            $0.top.equalTo(dishImageView.snp.bottom).offset(DishDescriptionViewConstants.defaultSideInset)
             $0.leading.trailing.equalTo(dishImageView)
-            $0.height.equalTo(15)
+            $0.height.equalTo(DishDescriptionViewConstants.defaultHeightForLabel)
         }
         
         dishParameterLabel.snp.makeConstraints {
-            $0.top.equalTo(dishNameLabel.snp.bottom).offset(8)
+            $0.top.equalTo(dishNameLabel.snp.bottom).offset(DishDescriptionViewConstants.defaultSideInset)
             $0.leading.trailing.equalTo(dishNameLabel)
-            $0.height.equalTo(15)
+            $0.height.equalTo(DishDescriptionViewConstants.defaultHeightForLabel)
         }
         
         dishDescriptionTextView.snp.makeConstraints {
-            $0.top.equalTo(dishParameterLabel.snp.bottom).offset(8)
-            $0.leading.trailing.equalToSuperview().inset(10)
-            $0.bottom.equalTo(addDishButton.snp.top).offset(-16)
+            $0.top.equalTo(dishParameterLabel.snp.bottom).offset(DishDescriptionViewConstants.defaultSideInset)
+            $0.leading.trailing.equalToSuperview().inset(DishDescriptionViewConstants.dishDescriptionTextViewSideInset)
+            $0.bottom.equalTo(addDishButton.snp.top).offset(DishDescriptionViewConstants.dishDescriptionTextViewBottomOffset)
         }
         
         addDishButton.snp.makeConstraints {
-            $0.leading.trailing.bottom.equalToSuperview().inset(16)
-            $0.height.equalTo(48)
+            $0.leading.trailing.bottom.equalToSuperview().inset(DishDescriptionViewConstants.addDishButtonSideInset)
+            $0.height.equalTo(DishDescriptionViewConstants.heightForAddDishButton)
         }
         
         dismissButton.snp.makeConstraints {
-            $0.top.trailing.equalToSuperview().inset(8)
-            $0.width.height.equalTo(40)
+            $0.top.trailing.equalToSuperview().inset(DishDescriptionViewConstants.defaultSideInset)
+            $0.width.height.equalTo(DishDescriptionViewConstants.defaultHeightForButton)
         }
         
         addToFavoriteButton.snp.makeConstraints {
-            $0.trailing.equalTo(dismissButton.snp.leading).offset(-8)
+            $0.trailing.equalTo(dismissButton.snp.leading).offset(-DishDescriptionViewConstants.defaultSideInset)
             $0.top.equalTo(dismissButton)
-            $0.width.height.equalTo(40)
+            $0.width.height.equalTo(DishDescriptionViewConstants.defaultHeightForButton)
         }
     }
 }

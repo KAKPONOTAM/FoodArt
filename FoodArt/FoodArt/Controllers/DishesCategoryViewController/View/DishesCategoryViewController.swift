@@ -6,8 +6,8 @@ final class DishesCategoryViewController: UIViewController {
     
     private lazy var dishesCategoryCollectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 30
-        layout.minimumInteritemSpacing = 8
+        layout.minimumLineSpacing = DishCategoryViewConstants.dishesCategoryCollectionViewMinimumLineSpacing
+        layout.minimumInteritemSpacing = DishCategoryViewConstants.dishesCategoryCollectionViewMinimumInteritemSpacing
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.delegate = self
         collectionView.dataSource = self
@@ -33,7 +33,7 @@ extension DishesCategoryViewController {
     
     private func setupConstraints() {
         dishesCategoryCollectionView.snp.makeConstraints {
-            $0.leading.trailing.equalToSuperview().inset(16)
+            $0.leading.trailing.equalToSuperview().inset(DishCategoryViewConstants.dishesCategoryCollectionViewSideInset)
             $0.top.bottom.equalToSuperview()
         }
     }
@@ -57,7 +57,7 @@ extension DishesCategoryViewController: UICollectionViewDataSource, UICollection
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: (collectionView.frame.width / 3) - 8, height: 130)
+        return CGSize(width: (collectionView.frame.width / 3) - 8, height: DishCategoryViewConstants.heightForItem)
     }
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
