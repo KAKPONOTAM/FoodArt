@@ -33,6 +33,15 @@ final class MainModuleBuilder {
         
         return dishesViewController
     }
+    
+    static func assemblyProductViewController(image: UIImage?, dish: Dish, router: MainRouter) -> UIViewController {
+        let productViewController = ProductViewController()
+        let viewModel = ProductViewModel(dish: dish, dishImage: image, router: router)
+        
+        productViewController.set(viewModel)
+        
+        return productViewController
+    }
 }
 
 //MARK: - assembly tabBar viewControllers
@@ -49,7 +58,7 @@ extension MainModuleBuilder {
     
     private static func assemblyBinViewController() -> UIViewController {
         let binViewController = BinViewController()
-        let binViewModel = BinViewModel()
+        let binViewModel = BinViewModel(dishesSelectionModels: DishesSelectionModel.selectedModels)
         
         binViewController.set(binViewModel)
         binViewController.tabBarItem = UITabBarItem(title: ModuleTitles.binTitle.title, image: ModuleImages.binSegmentIcon.icon, selectedImage: ModuleImages.binSegmentIcon.icon.withTintColor(UIColor(.customBlue) ?? .black))

@@ -5,6 +5,8 @@ enum ModuleImages {
     case searchSegmentIcon
     case binSegmentIcon
     case accountSegmentIcon
+    case heartImage
+    case dismissImage
     
     var icon: UIImage {
         switch self {
@@ -19,6 +21,12 @@ enum ModuleImages {
             
         case .accountSegmentIcon:
             return UIImage(named: "accountSegmentIcon") ?? .add
+            
+        case .heartImage:
+            return UIImage(named: "heartImage") ?? .add
+            
+        case .dismissImage:
+            return UIImage(named: "dismissImage") ?? .actions
         }
     }
 }
