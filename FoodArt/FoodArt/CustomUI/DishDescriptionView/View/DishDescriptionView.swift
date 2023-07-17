@@ -3,6 +3,7 @@ import SnapKit
 
 protocol DishDescriptionViewDelegate: AnyObject {
     func dismissButtonTapped()
+    func addDishButtonTapped()
 }
 
 final class DishDescriptionView: UIView {
@@ -39,13 +40,14 @@ final class DishDescriptionView: UIView {
         return button
     }()
     
-    private let addDishButton: UIButton = {
+    private lazy var addDishButton: UIButton = {
         let button = UIButton()
         button.setTitle(ModuleTitles.addDishTitle.title, for: .normal)
         button.titleLabel?.font = UIFont(font: .displayRegular, fontSize: DishDescriptionViewConstants.addDishButtonFontSize)
         button.setTitleColor(.white, for: .normal)
         button.backgroundColor = UIColor(.customBlue)
         button.layer.cornerRadius = DishDescriptionViewConstants.addDishButtonCornerRadius
+        button.addTarget(self, action: #selector(addDishButtonTapped), for: .touchUpInside)
         
         return button
     }()
@@ -97,6 +99,11 @@ final class DishDescriptionView: UIView {
     private func addToFavoriteButtonTapped() {
         addToFavoriteButton.isSelected.toggle()
         addToFavoriteButton.tintColor = addToFavoriteButton.isSelected ? .red : .black
+    }
+    
+    @objc
+    private func addDishButtonTapped() {
+        delegate?.addDishButtonTapped()
     }
 }
 

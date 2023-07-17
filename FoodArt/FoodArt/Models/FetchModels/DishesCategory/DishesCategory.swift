@@ -1,10 +1,10 @@
 import Foundation
 
-struct DishesCategory: Codable, Equatable {
+struct DishesCategory: Codable, Hashable {
     let dishes: [Dish]
 }
 
-struct Dish: Codable, Equatable {
+struct Dish: Codable, Hashable {
     let id: Int
     let name: String
     let price: Int

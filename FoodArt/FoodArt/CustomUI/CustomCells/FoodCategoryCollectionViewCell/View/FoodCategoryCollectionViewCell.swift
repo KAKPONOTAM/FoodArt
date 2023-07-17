@@ -30,7 +30,6 @@ final class FoodCategoryCollectionViewCell: UICollectionViewCell {
     
     func configure(with foodCategoryTitle: String?) {
         foodCategoryLabel.text = foodCategoryTitle
-        
     }
 }
 

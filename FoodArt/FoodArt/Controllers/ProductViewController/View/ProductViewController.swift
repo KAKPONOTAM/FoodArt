@@ -17,9 +17,9 @@ final class ProductViewController: UIViewController {
         super.viewDidLoad()
         addSubview()
         setupConstraints()
+        bind()
         
         view.backgroundColor = .black.withAlphaComponent(0.5)
-        bind()
     }
 }
 
@@ -58,6 +58,10 @@ extension ProductViewController: ViewModelSetterProtocol {
 }
 
 extension ProductViewController: DishDescriptionViewDelegate {
+    func addDishButtonTapped() {
+        viewModel?.addDishButtonTapped()
+    }
+    
     func dismissButtonTapped() {
         viewModel?.dismissButtonTapped()
     }
