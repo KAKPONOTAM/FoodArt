@@ -8,6 +8,8 @@ enum ModuleImages {
     case heartImage
     case dismissImage
     case leftBarButtonIcon
+    case decreaseIcon
+    case plusIcon
     
     var icon: UIImage {
         switch self {
@@ -31,6 +33,12 @@ enum ModuleImages {
             
         case .leftBarButtonIcon:
             return UIImage(named: "leftBarButtonIcon") ?? .actions
+            
+        case .decreaseIcon:
+            return UIImage(named: "decreaseIcon") ?? .actions
+            
+        case .plusIcon:
+            return UIImage(named: "plusIcon") ?? .actions
         }
     }
 }

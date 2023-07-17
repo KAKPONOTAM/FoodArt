@@ -13,10 +13,10 @@ final class MainModuleBuilder {
         return launchViewController
     }
     
-    static func assemblyMainViewController(depends coordinator: RootViewControllerCoordinator, router: MainRouter) -> UIViewController {
-        let binViewController = assemblyBinViewController()
+    static func assemblyMainViewController(depends coordinator: RootViewControllerCoordinator, router: MainRouter, savedDishModels: [SavedDishModel]) -> UIViewController {
         let searchViewController = assemblySearchViewController()
         let accountViewController = assemblyAccountViewController()
+        let binViewController = assemblyBinViewController()
         
         let tabBarViewController = UITabBarController()
         
@@ -39,7 +39,8 @@ final class MainModuleBuilder {
     
     static func assemblyProductViewController(image: UIImage?, dish: Dish, router: MainRouter) -> UIViewController {
         let productViewController = ProductViewController()
-        let viewModel = ProductViewModel(dish: dish, dishImage: image, router: router)
+        let realmManager = RealmManager()
+        let viewModel = ProductViewModel(dish: dish, dishImage: image, router: router, realmManager: realmManager)
         
         productViewController.set(viewModel)
         
@@ -62,7 +63,8 @@ extension MainModuleBuilder {
     
     private static func assemblyBinViewController() -> UIViewController {
         let binViewController = BinViewController()
-        let binViewModel = BinViewModel()
+        let realmManager = RealmManager()
+        let binViewModel = BinViewModel(realmManager: realmManager)
         
         binViewController.set(binViewModel)
         binViewController.tabBarItem = UITabBarItem(title: ModuleTitles.binTitle.title, image: ModuleImages.binSegmentIcon.icon, selectedImage: ModuleImages.binSegmentIcon.icon.withTintColor(UIColor(.customBlue) ?? .black))

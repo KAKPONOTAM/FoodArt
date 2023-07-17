@@ -6,7 +6,7 @@ final class MainRouter {
 
 extension MainRouter {
     func changeRootViewController(depends coordinator: RootViewControllerCoordinator) {
-        controller = MainModuleBuilder.assemblyMainViewController(depends: coordinator, router: self)
+        controller = MainModuleBuilder.assemblyMainViewController(depends: coordinator, router: self, savedDishModels: .emptyCollection)
         
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate,
               let window = appDelegate.window else { return }

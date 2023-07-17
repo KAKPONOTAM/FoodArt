@@ -6,6 +6,7 @@ enum ModuleTitles {
     case addDishTitle
     case searchTitle
     case accountTitle
+    case pay
     
     var title: String? {
         switch self {
@@ -23,6 +24,9 @@ enum ModuleTitles {
             
         case .addDishTitle:
             return "Добавить в корзину"
+            
+        case .pay:
+            return "Оплатить"
         }
     }
 }
